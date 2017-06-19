@@ -10,20 +10,20 @@ describe SatoshiProc do
     expect(SatoshiProc.new(-1.00).to_i).to eq(-100000000)
   end
 
-  it "converts satoshi unit back to some more common denomination" do
-    expect(SatoshiProc.new(1.00).to_btc).to eq(1)
-    expect(SatoshiProc.new(1.08763).to_btc).to eq(1.08763)
-    expect(SatoshiProc.new(1.08763).to_mbtc).to eq(1087.63)
-    expect(SatoshiProc.new(-1.08763).to_mbtc).to eq(-1087.63)
+  it "converts satoshiproc unit back to some more common denomination" do
+    expect(SatoshiProc.new(1.00).to_proc).to eq(1)
+    expect(SatoshiProc.new(1.08763).to_proc).to eq(1.08763)
+    expect(SatoshiProc.new(1.08763).to_mproc).to eq(1087.63)
+    expect(SatoshiProc.new(-1.08763).to_mproc).to eq(-1087.63)
     expect(SatoshiProc.new(0.00000001).to_i).to eq(1)
-    expect(SatoshiProc.new(0.00000001).to_mbtc).to eq(0.00001)
+    expect(SatoshiProc.new(0.00000001).to_mproc).to eq(0.00001)
   end
    
   it "converts from various source denominations" do
-    expect(SatoshiProc.new(1, unit: 'mbtc').to_btc).to      eq(0.001)
-    expect(SatoshiProc.new(1, unit: 'mbtc').to_unit).to     eq(1)
-    expect(SatoshiProc.new(10000000, unit: 'mbtc').to_unit).to eq(10000000)
-    satoshiproc = SatoshiProc.new(10000000, unit: 'mbtc')
+    expect(SatoshiProc.new(1, unit: 'mproc').to_proc).to      eq(0.001)
+    expect(SatoshiProc.new(1, unit: 'mproc').to_unit).to     eq(1)
+    expect(SatoshiProc.new(10000000, unit: 'mproc').to_unit).to eq(10000000)
+    satoshiproc = SatoshiProc.new(10000000, unit: 'mproc')
     satoshiproc.satoshiproc_value = 1
     expect(satoshiproc.to_unit).to eq(0.00001)
     expect(SatoshiProc.new(100, unit: 'mproc').to_i).to eq(10000000)
@@ -36,28 +36,28 @@ describe SatoshiProc do
   end
 
   it "converts negative values correctly" do
-    expect(SatoshiProc.new(-1.00, unit: :mbtc).to_btc).to eq(-0.001)
+    expect(SatoshiProc.new(-1.00, unit: :mproc).to_proc).to eq(-0.001)
   end
 
   it "converts zero values correctly" do
-    expect(SatoshiProc.new(0, unit: :mbtc).to_unit).to eq(0)
+    expect(SatoshiProc.new(0, unit: :mproc).to_unit).to eq(0)
   end
 
   it "converts nil values correctly" do
-    s = SatoshiProc.new(nil, unit: :mbtc)
+    s = SatoshiProc.new(nil, unit: :mproc)
     expect(s.value).to eq(0)
     s.value = nil
     expect(s.to_unit).to eq(0)
   end
 
   it "displays one SatoshiProc in human form, not math form" do
-    one_satoshiproc = SatoshiProc.new(1, from_unit: :satoshi, to_unit: :proc)
+    one_satoshiproc = SatoshiProc.new(1, from_unit: :satoshiproc, to_unit: :proc)
     expect(one_satoshiproc.to_unit(as: :string)).not_to eq('1.0e-08')
     expect(one_satoshiproc.to_unit(as: :string)).to eq('0.00000001')
   end
 
   it "displays zero SatoshiProc in human form, not math form" do
-    zero_satoshiproc = SatoshiProc.new(0, from_unit: :satoshi, to_unit: :proc)
+    zero_satoshiproc = SatoshiProc.new(0, from_unit: :satoshiproc, to_unit: :proc)
     expect(zero_satoshiproc.to_unit(as: :string)).to eq('0.0')
   end
 

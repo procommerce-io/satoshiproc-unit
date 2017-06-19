@@ -21,7 +21,7 @@ class SatoshiProc
       @from_unit = from_unit.downcase.to_sym
       @to_unit   = to_unit.downcase.to_sym
     end
-    @value = convert_to_satoshi(n) if n
+    @value = convert_to_satoshiproc(n) if n
   end
 
   def to_proc(as: :number)
