@@ -1,4 +1,4 @@
-Satoshi Unit
+SatoshiProc Unit
 ================
 This tiny gem allows you to make easy conversions from one Proc denomination into another.
 It provides a class, which objects would essentially represent an amount of procss measured
