@@ -26,7 +26,7 @@ GEM
       git (>= 1.2.5)
       github_api (~> 0.11.0)
       highline (>= 1.6.15)
-      nokogiri (>= 1.5.10)
+      nokogiri (>= 1.10.8)
       rake
       rdoc
       semver
